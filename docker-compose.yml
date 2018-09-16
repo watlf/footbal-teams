@@ -1,0 +1,26 @@
+version: '2'
+services:
+  data:
+    container_name: footbal_teams_data
+    build: ./docker/data
+    volumes:
+      - .:/www
+    command: /var/local/entrypoint.sh
+  php:
+    container_name: footbal_teams_php
+    build: ./docker/php
+    volumes_from:
+      - data
+    command: /var/local/entrypoint.sh
+
+  nginx:
+    container_name: footbal_teams_nginx
+    build:
+      context: ./docker/nginx
+    ports:
+      - "8001:80"
+    links:
+      - php
+    volumes_from:
+      - php
+      - data
