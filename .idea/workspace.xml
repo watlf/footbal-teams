@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="308ccf38-84f4-4d2e-a49e-8e3f3307b27d" name="Default" comment="">
+    <list default="true" id="308ccf38-84f4-4d2e-a49e-8e3f3307b27d" name="Default" comment="rm .idea">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +37,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+            <state relative-caret-position="100">
+              <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -186,11 +187,11 @@
         <option value="$PROJECT_DIR$/docker/data/entrypoint.sh" />
         <option value="$PROJECT_DIR$/docker/php/Dockerfile" />
         <option value="$PROJECT_DIR$/docker/php/php.ini" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/docker/nginx/challenge.conf" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -329,11 +330,18 @@
       <option name="project" value="LOCAL" />
       <updated>1537116724372</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="rm .idea">
+      <created>1537120685312</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537120685312</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7529000" />
+    <option name="totallyTimeSpent" value="7910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="-35" width="1368" height="804" extended-state="6" />
@@ -367,7 +375,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init symfony project" />
-    <option name="LAST_COMMIT_MESSAGE" value="init symfony project" />
+    <MESSAGE value="rm .idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="rm .idea" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -531,8 +540,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="33" lean-forward="true" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        <state relative-caret-position="100">
+          <caret line="5" column="5" lean-forward="true" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
           <folding />
         </state>
       </provider>
