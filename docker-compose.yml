@@ -24,3 +24,12 @@ services:
     volumes_from:
       - php
       - data
+
+  db:
+    container_name: footbal_teams_db
+    build:
+      context: ./docker/db
+    restart: always
+    volumes_from:
+      - php
+      - data
