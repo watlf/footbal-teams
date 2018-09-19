@@ -1,6 +1,0 @@
-FROM mysql:5.7
-
-ENV MYSQL_ROOT_PASSWORD: mysql_pass
-ENV MYSQL_DATABASE: fifa
-ENV MYSQL_USER: gianni_infantino
-ENV MYSQL_PASSWORD: mysql

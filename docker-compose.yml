@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 services:
   data:
     container_name: footbal_teams_data
@@ -6,12 +6,31 @@ services:
     volumes:
       - .:/www
     command: /var/local/entrypoint.sh
+
+  db:
+    container_name: footbal_teams_db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 5s
+        retries: 10
+
   php:
     container_name: footbal_teams_php
     build: ./docker/php
     volumes_from:
       - data
     command: /var/local/entrypoint.sh
+    depends_on:
+      db:
+        condition: service_healthy
 
   nginx:
     container_name: footbal_teams_nginx
@@ -21,15 +40,6 @@ services:
       - "8001:80"
     links:
       - php
-    volumes_from:
-      - php
-      - data
-
-  db:
-    container_name: footbal_teams_db
-    build:
-      context: ./docker/db
-    restart: always
     volumes_from:
       - php
       - data
