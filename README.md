@@ -1,16 +1,18 @@
 # UK Premier League
 
-# Installing and running
+## How to get started
+In order to make things easier, please use [Docker](https://docs.docker.com/engine/installation/) setup 
+with [Docker Compose](https://docs.docker.com/compose/install/)
+
+## Installing and running
 
 Add an entry `127.0.0.1 footbal-teams.loc` to your `/etc/hosts` file:
-```sh
+```
 sudo echo "127.0.0.1 footbal-teams.loc" >> /etc/hosts
 ```
-Run from the following from the project root:
+Run from the following from the project root (it uses Makefile for run command):
 ```
-docker-compose build
-docker-compose up -d
-docker exec -it footbal_teams_php bash -c "composer install"
+make docker-build
 ```
 
 You can now verify the webserver is running with
@@ -21,6 +23,3 @@ and tests can be run with
 ```
 docker exec -it footbal_teams_php bash -c "vendor/bin/phpunit"
 ```
-
-docker rm $(docker ps -a -q)
-docker stop $(docker ps -a -q)
