@@ -12,5 +12,5 @@ container-build:
 	$(DOCKER) exec -it footbal_teams_php bash -c "php bin/console --no-interaction doctrine:migrations:migrate"
 	$(DOCKER) exec -it footbal_teams_php bash -c "php bin/console --no-interaction doctrine:fixtures:load"
 
-tests:
-    $(DOCKER) exec -it footbal_teams_php bash -c "vendor/bin/phpunit"
+test:
+	$(DOCKER) exec -it footbal_teams_php bash -c "vendor/bin/phpunit"
