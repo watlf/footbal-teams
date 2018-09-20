@@ -12,7 +12,7 @@ sudo echo "127.0.0.1 footbal-teams.loc" >> /etc/hosts
 ```
 Run from the following from the project root (it uses Makefile for run command):
 ```
-make docker-build
+make container-build
 ```
 
 You can now verify the webserver is running with
@@ -21,5 +21,5 @@ curl footbal-teams.loc:8001 -vvv
 ```
 and tests can be run with 
 ```
-docker exec -it footbal_teams_php bash -c "vendor/bin/phpunit"
+make tests
 ```
