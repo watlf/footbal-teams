@@ -20,10 +20,17 @@ class TeamRepository extends ServiceEntityRepository
     }
 
     /**
-     * Create a football team
+     * @param int $leagueId
+     * @return Team[]
      */
-    public function createTeam()
+    public function findTeamsByLeague(int $leagueId): array
     {
-
+        return $this->createQueryBuilder('t')
+            ->innerJoin('t.league', 'l')
+            ->addSelect('l')
+            ->andWhere('t.league = :id')
+            ->setParameter('id', $leagueId)
+            ->getQuery()
+            ->getArrayResult();
     }
 }
