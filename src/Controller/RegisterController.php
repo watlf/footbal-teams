@@ -2,14 +2,14 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-class RegisterController extends AbstractController
+class RegisterController extends AbstractApiController
 {
     /**
      * @Route("/register", name="register", methods={"POST"})
@@ -21,23 +21,25 @@ class RegisterController extends AbstractController
     public function register(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $em = $this->getDoctrine()->getManager();
-        $username = $request->getUser();
-        $password = $request->getPassword();
 
-        $user = $em->getRepository('App:User')->findOneBy(['username' => $username]);
+        $userForm = $this->createForm(UserType::class);
 
-        if (!is_null($user)) {
-            return $this->json(['error' => sprintf('User %s user already exists', $user->getUsername())], 409);
+        $this->processForm($request, $userForm);
+
+        if ($userForm->isValid()) {
+            /** @var User $user */
+            $user = $userForm->getData();
+
+            $user->setPassword($user->getPassword());
+            $em->persist($user);
+            $em->flush();
+
+            return $this->json([
+                'success' => sprintf('User %s successfully created', $user->getUsername()),
+            ]);
+
+        } else {
+            return $this->json($this->fetchFormErrors($userForm), 409);
         }
-
-        $user = new User($username);
-        $user->setPassword($encoder->encodePassword($user, $password));
-
-        $em->persist($user);
-        $em->flush();
-
-        return $this->json([
-            'success' => sprintf('User %s successfully created', $user->getUsername()),
-        ]);
     }
 }

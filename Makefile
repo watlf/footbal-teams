@@ -10,7 +10,6 @@ container-build:
 	$(DOCKER_COMPOSE) up -d
 	$(DOCKER) exec -it footbal_teams_php bash -c "composer install"
 	$(DOCKER) exec -it footbal_teams_php bash -c "php bin/console --no-interaction doctrine:migrations:migrate"
-	$(DOCKER) exec -it footbal_teams_php bash -c "php bin/console --no-interaction doctrine:fixtures:load"
 
 test:
 	$(DOCKER) exec -it footbal_teams_php bash -c "vendor/bin/phpunit"
