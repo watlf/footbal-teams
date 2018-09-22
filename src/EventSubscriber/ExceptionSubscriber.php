@@ -36,7 +36,7 @@ class ExceptionSubscriber implements EventSubscriberInterface
             $response->setStatusCode($exception->getStatusCode());
             $response->headers->replace($exception->getHeaders());
         } else {
-            $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
+            $response->setStatusCode(Response::HTTP_CONFLICT);
         }
 
         $event->setResponse($response);

@@ -7,8 +7,8 @@ services:
       - .:/www
     command: /var/local/entrypoint.sh
 
-  db:
-    container_name: footbal_teams_db
+  db_master:
+    container_name: footbal_teams_master_db
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -21,6 +21,20 @@ services:
         test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
         timeout: 5s
         retries: 10
+    ports:
+      - "3307:3306"
+  db_test:
+    container_name: footbal_teams_test_db
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE_TEST}
+      MYSQL_USER: ${MYSQL_USER_TEST}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD_test}
+    ports:
+      - "3308:3306"
 
   php:
     container_name: footbal_teams_php
@@ -29,7 +43,7 @@ services:
       - data
     command: /var/local/entrypoint.sh
     depends_on:
-      db:
+      db_master:
         condition: service_healthy
 
   nginx:

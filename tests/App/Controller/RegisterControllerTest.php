@@ -2,16 +2,8 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\Client;
-
-class RegisterControllerTest extends WebTestCase
+class RegisterControllerTest extends AbstractControllerWebTest
 {
-    /* @var Client */
-    protected $client;
-
-    protected static $cookie;
-
     public function setUp()
     {
         $this->client = static::createClient();
@@ -35,6 +27,20 @@ class RegisterControllerTest extends WebTestCase
 
     public function testRegister()
     {
-        $this->markTestIncomplete('This test has not been implemented yet.');
+        $content = json_encode([
+            'username' => 'tom',
+            'password' => '12345678',
+        ]);
+
+        $this->client->request(
+            'POST',
+            '/register',
+            [],
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
+            $content
+        );
+
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 }
