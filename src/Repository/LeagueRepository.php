@@ -18,23 +18,4 @@ class LeagueRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, League::class);
     }
-
-    /**
-     * Get a list of football teams in a single league
-     * @param int $leagueId
-     */
-    public function findTeams(int $leagueId)
-    {
-
-    }
-
-    /**
-     * Delete a football league
-     *
-     * @param int $leagueId
-     */
-    public function deleteLeague(int $leagueId)
-    {
-
-    }
 }

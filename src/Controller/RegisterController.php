@@ -30,7 +30,7 @@ class RegisterController extends AbstractApiController
             /** @var User $user */
             $user = $userForm->getData();
 
-            $user->setPassword($user->getPassword());
+            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
             $em->persist($user);
             $em->flush();
 
