@@ -25,11 +25,7 @@ make container-build
 
 ## Let's start
 
-It uses JWT auth, so you need to register a user for it, or you can use default credentials for get a JMT token
-```html
-username => johndoe
-password => 12345678
-```
+It uses JWT auth, so you need to register a user for it.
 
 ```
 $ curl -X POST -H "Content-Type: application/json" http://footbal-teams.loc:8001/register -d '{"username":"USER_NAME","password":"PASS"}';
@@ -37,7 +33,7 @@ $ curl -X POST -H "Content-Type: application/json" http://footbal-teams.loc:8001
 
 Than you can get a JWT token:
 ```
-$ curl -X POST -H "Content-Type: application/json" http://footbal-teams.loc:8001/login_check -d '{"username":"johndoe","password":"12345678"}';
+$ curl -X POST -H "Content-Type: application/json" http://footbal-teams.loc:8001/login_check -d '{"username":"USER_NAME","password":"PASS"}';
 ```
 
 And now you can finally get an access for secured route:
