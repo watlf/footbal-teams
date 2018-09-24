@@ -25,7 +25,7 @@ make container-build
 
 ## Let's start
 
-It uses JWT auth, so you need to register a user for it, for get a JMT token
+It uses JWT auth, so you need to register a user for it.
 
 ```
 $ curl -X POST -H "Content-Type: application/json" http://footbal-teams.loc:8001/register -d '{"username":"USER_NAME","password":"PASS"}';
