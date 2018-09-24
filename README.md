@@ -6,6 +6,13 @@ with [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Installing and running
 
+```
+git clone https://github.com/watlf/footbal-teams;
+cd footbal-teams;
+cp .env.dist .env
+cp phpunit.xml.dist phpunit.xml
+```
+
 Add an entry `127.0.0.1 footbal-teams.loc` to your `/etc/hosts` file:
 ```
 sudo echo "127.0.0.1 footbal-teams.loc" >> /etc/hosts
